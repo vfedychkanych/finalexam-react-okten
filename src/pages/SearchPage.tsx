@@ -19,7 +19,7 @@ const SearchPage = () => {
 
     return (
         <div>
-            <SearchForm/>
+            <SearchForm setQuery={setQuery}/>
             {loading ? searchParam&&<Movies movies={movies} page={page} setQuery={setQuery} totalpage={total_pages}/> :
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
                     <Puff

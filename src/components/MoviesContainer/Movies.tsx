@@ -41,11 +41,15 @@ const Movies: FC<IProps> = ({ movies, setQuery, page, totalpage }) => {
                 ))}
             </div>
             <div className={css.pagination}>
-                <button onClick={prev}>Prev</button>
+                <button onClick={prev} disabled={+page === 1} className={+page === 1 ? css.disabledButton : ''}>
+                    Prev
+                </button>
                 <div className={css.pages}>
                     <h3>{page}</h3>
                 </div>
-                <button onClick={next}>Next</button>
+                <button onClick={next} disabled={+page === totalpage} className={+page === totalpage ? css.disabledButton : ''}>
+                    Next
+                </button>
             </div>
         </div>
     );

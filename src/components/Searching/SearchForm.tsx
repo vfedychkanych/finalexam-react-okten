@@ -9,9 +9,10 @@ import {movieAction} from "../../store";
 
 
 interface IProps{
+    setQuery:SetURLSearchParams;
 }
 
-const SearchForm:FC<IProps> = () => {
+const SearchForm:FC<IProps> = ({setQuery}) => {
     const {register, reset, handleSubmit} = useForm({
         mode: 'all'
     });
@@ -22,6 +23,7 @@ const SearchForm:FC<IProps> = () => {
     const giveMovie = (e: any) => {
         dispatch(movieAction.setSearchParam(e.name))
         dispatch(movieAction.setFormSubmitted(true))
+        setQuery({page: '1'})
         reset()
     };
 

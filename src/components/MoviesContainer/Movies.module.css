@@ -62,3 +62,10 @@
     margin-bottom: 10px;
     font-size: 26px;
 }
+
+
+.disabledButton {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}

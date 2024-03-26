@@ -1,14 +1,23 @@
 import {NavLink} from "react-router-dom";
 import css from "./Header.module.css"
-import {useContext} from "react";
+import {useContext, useEffect} from "react";
 import {Context} from "../../layouts";
 
 const Header = () => {
     const [switcher, setSwitcher] = useContext(Context);
 
     const toggleSwitcher = () => {
-        setSwitcher(!switcher);
+        const newSwitcherValue = !switcher;
+        setSwitcher(newSwitcherValue);
+        localStorage.setItem('switcher', JSON.stringify(newSwitcherValue));
     };
+
+    useEffect(() => {
+        const savedSwitcher = localStorage.getItem('switcher');
+        if (savedSwitcher !== null) {
+            setSwitcher(JSON.parse(savedSwitcher));
+        }
+    }, [setSwitcher]);
 
     return (
         <div className={css.container}>
