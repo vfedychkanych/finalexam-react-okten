@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 
 import { IGenre, IMovie } from "../../interfaces";
-import { NavLink } from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import css from "./MovieDetails.module.css";
 import StarRatings from "react-star-ratings";
 import { useAppSelector} from "../../hooks";
@@ -12,8 +12,9 @@ interface IProps {
 }
 
 const MovieDetails: FC<IProps> = ({ movieDetails}) => {
-    const { original_title, overview, poster_path, vote_average, release_date, genres: movieGenres, popularity } = movieDetails;
+    const { original_title, overview, poster_path, vote_average, release_date, genres: movieGenres, popularity , homepage} = movieDetails;
     let {loading} = useAppSelector(state => state.movies);
+    const linkToPage = `${homepage}`;
     return (
     <div>
         {loading ? <div className={css.movieDetails}>
@@ -52,6 +53,16 @@ const MovieDetails: FC<IProps> = ({ movieDetails}) => {
                                     />
                                 </div>}
                         </div>
+                        <div>
+                            {(homepage !== '') &&
+                                <Link to={linkToPage} className={css.link}>
+                                    <button className={css.resors}>Перейти на ресурс</button>
+                                </Link>
+                            }
+                        </div>
+                    </div>
+                    <div>
+
                     </div>
                 </div>
             </div>
