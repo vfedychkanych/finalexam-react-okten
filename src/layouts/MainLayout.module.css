@@ -1,0 +1,10 @@
+.darkBody{
+    background-color: #061100;
+    height: 100%;
+    min-height: 100vh;
+}
+.whiteBody{
+    background-color: rgb(255, 246, 219);
+    height: 100%;
+    min-height: 100vh;
+}
