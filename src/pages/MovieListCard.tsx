@@ -3,6 +3,7 @@ import {useParams} from "react-router-dom";
 import {MovieDetails} from "../components";
 import {useEffect} from "react";
 import {movieAction} from "../store";
+import {NotFoundPage} from "./NotFoundPage";
 
 
 const MovieListCard = () => {
@@ -15,7 +16,7 @@ const MovieListCard = () => {
     }, [id]);
     return (
         <div>
-            {movieDetails&&<MovieDetails movieDetails={movieDetails}/>}
+            {movieDetails ? <MovieDetails movieDetails={movieDetails}/> : <NotFoundPage/>}
         </div>
     );
 };

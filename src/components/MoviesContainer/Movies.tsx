@@ -30,7 +30,6 @@ const Movies: FC<IProps> = ({ movies, setQuery, page, totalpage }) => {
             });
         }
     };
-
     return (
         <div className={css.allContand}>
             <div className={css.moviesContainer}>
@@ -40,7 +39,7 @@ const Movies: FC<IProps> = ({ movies, setQuery, page, totalpage }) => {
                     </div>
                 ))}
             </div>
-            <div className={css.pagination}>
+            {(movies.length > 0)&&<div className={css.pagination}>
                 <button onClick={prev} disabled={+page === 1} className={+page === 1 ? css.disabledButton : ''}>
                     Prev
                 </button>
@@ -50,7 +49,7 @@ const Movies: FC<IProps> = ({ movies, setQuery, page, totalpage }) => {
                 <button onClick={next} disabled={+page === totalpage} className={+page === totalpage ? css.disabledButton : ''}>
                     Next
                 </button>
-            </div>
+            </div>}
         </div>
     );
 };

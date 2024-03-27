@@ -1,9 +1,10 @@
-import {useParams, useSearchParams} from "react-router-dom";
+import { useParams, useSearchParams} from "react-router-dom";
 import {Movies} from "../components";
 import {useEffect} from "react";
 import {useAppDispatch, useAppSelector} from "../hooks";
 import {movieAction} from "../store";
 import {Puff} from "react-loader-spinner";
+import {NotFoundPage} from "./NotFoundPage";
 
 
 const MoviesByGenrePage = () => {
@@ -19,16 +20,24 @@ const MoviesByGenrePage = () => {
     }, [id_genre, query]);
 
 
+
     return (
         <div>
-            {loading ? <Movies movies={movies} page={page} setQuery={setQuery} totalpage={total_pages}/> :
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-                    <Puff
-                        color="#00BFFF"
-                        height={100}
-                        width={100}
-                    />
-                </div>}
+            {movies.length > 0 ? (
+                loading ? (
+                    <Movies movies={movies} page={page} setQuery={setQuery} totalpage={total_pages}/>
+                ) : (
+                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+                        <Puff
+                            color="#00BFFF"
+                            height={100}
+                            width={100}
+                        />
+                    </div>
+                )
+            ) : (
+                <NotFoundPage />
+            )}
         </div>
     );
 };

@@ -1,0 +1,31 @@
+.container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.image {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 20px;
+    animation: bounce 2s infinite;
+}
+
+.heading {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #FF5733;
+}
+
+.paragraph {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.link{
+    color: crimson;
+}
